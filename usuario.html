@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head> 
+    <title>BBB - Comprar e vender - Cadastro de {{titulo}}</title>
+</head>
+
+<body>
+    <h4>Cadastro de {{titulo}}</h4>
+    <form action="/usuario/criar" method="post">
+        <p><label for="user">Username</label>
+        <input type="text" id="user" name="user"></p>
+
+        <p><label for="email">E-mail</label>
+        <input type="text" id="email" name="email"></p>       
+
+        <p><label for="passwd">Password</label>
+        <input type="text" id="passwd" name="passwd"></p>
+
+        <p><label for="end">Endereco</label>
+        <input type="text" id="end" name="end"></p>
+        
+        <p><input type="submit" value="Cadastrar"></p>
+    </form>
+
+    <h4>Lista de {{titulo}}</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Senha</th>
+                <th>Endereco</th>
+                <th>Editar</th>
+                <th>Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.senha }}</td>
+                    <td>{{ usuario.end }}</td>
+                    <td><a href={{ url_for("editarusuario",id=usuario.id) }}>Editar?</a></td>
+                    <td><a href={{ url_for("deletarusuario",id=usuario.id) }}>Deletar?</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
+

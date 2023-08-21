@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>BBB - Comprar e vender - Cadastro de {{titulo}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h4 class="mt-4">Lista de {{titulo}}</h4>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for relatorio in relatorios %}
+                    <tr>
+                        <td>{{ relatorio.nome }}</td>
+                        <td>{{ relatorio.qtd }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

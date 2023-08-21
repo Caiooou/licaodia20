@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BBB - Comprar e vender - Cadastro de {{titulo}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h4 class="mt-4">Cadastro de {{titulo}}</h4>
+        <form action="/anuncio/novo" method="post">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome">
+            </div>
+            <div class="mb-3">
+                <label for="desc" class="form-label">Desc</label>
+                <textarea class="form-control" rows="4" id="desc" name="desc"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-secondary">Favoritar</button>
+        </form>
+
+        <h4 class="mt-4">Lista de {{titulo}}</h4>
+        <table class="table table-striped table-responsive-md table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Nome</th>
+                    <th>Desc</th>
+                    <th>Qtd</th>
+                    <th>Preco</th>
+                    <th>Categoria</th>
+                    <th>Perguntar</th>
+                    <th>Pergunta Feita</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for anuncio in anuncios %}
+                    <tr>
+                        <td>{{ anuncio.nome }}</td>
+                        <td>{{ anuncio.desc }}</td>
+                        <td>{{ anuncio.qtd }}</td>
+                        <td>{{ anuncio.preco }}</td>
+                        <td>{{ anuncio.cat_id }}</td>
+                        <td><a href={{ url_for("pergunta",id=anuncio.id) }} class="btn btn-info">Fazer Pergunta</a></td>
+                        <td>{{ pergunta.perguntar }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
